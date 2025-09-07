@@ -1,0 +1,48 @@
+{
+  "name": "taskmanager",
+  "displayName": "taskmanager",
+  "description": "Task Manager Extension",
+  "version": "1.0.0",
+  "publisher": "kaede",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaedeek/TaskManager.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:taskManager.open"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "taskManager.open",
+        "title": "Open Task Manager"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.34.0",
+    "typescript": "^5.9.2"
+  }
+}

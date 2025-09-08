@@ -2,7 +2,7 @@
   "name": "taskmanager",
   "displayName": "taskmanager",
   "description": "Task Manager Extension",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "publisher": "kaede",
   "engines": {
     "vscode": "^1.99.0"
@@ -23,8 +23,26 @@
       {
         "command": "taskManager.open",
         "title": "Open Task Manager"
+      },
+      {
+        "command": "taskManager.deleteTask",
+        "title": "Delete Task"
+      }
+    ],
+    "menus": {
+    "view/item/context": [
+      {
+        "command": "taskmanager.deleteTask",
+        "when": "view == taskmanagerView",
+        "group": "inline"
+      },
+      {
+        "command": "taskmanager.editTask",
+        "when": "view == taskmanagerView",
+        "group": "inline"
       }
     ]
+  }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

@@ -5,8 +5,10 @@ node_modules
 
 .vscode/
 .vscode-test.mjs
+.vscodeignore
 vsc-extension-quickstart.md
 tsconfig.json
 package-lock.json
+package.json
 eslint.config.mjs
 CHANGELOG.md

@@ -1,5 +1,14 @@
 out
 dist
 node_modules
-.vscode-test/
 *.vsix
+
+vsc-extension-quickstart.md
+tsconfig.json
+package-lock.json
+package.json
+eslint.config.mjs
+CHANGELOG.md
+.vscodeignore
+.vscode-test.mjs
+.vscode/

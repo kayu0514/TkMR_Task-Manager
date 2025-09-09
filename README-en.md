@@ -1,10 +1,10 @@
-# TaskManager
+# TkMR - Task Manager
 
 Japanese [here](https://github.com/kaedeek/TaskManager/blob/main/README.md)
 
-## What is TaskManager?
+## What is TkMR - Task Manager?
 
-TaskManager is a VSCode extension for managing tasks in each folder.
+TkMR - Task Manager is a VSCode extension for managing tasks in each folder.
 
 ## Features
 

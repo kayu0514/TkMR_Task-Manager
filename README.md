@@ -1,10 +1,12 @@
-# TaskManager
+# TkMR - Task Manager
 
 English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 
-## TaskManager とは？
+## TkMR - Task Manager とは？
 
 各フォルダのタスク管理を行う Vscode の拡張機能です。
+
+## 
 
 ## 機能
 

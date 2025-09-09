@@ -3,12 +3,10 @@ dist
 node_modules
 *.vsix
 
+.vscode/
+.vscode-test.mjs
 vsc-extension-quickstart.md
 tsconfig.json
 package-lock.json
-package.json
 eslint.config.mjs
 CHANGELOG.md
-.vscodeignore
-.vscode-test.mjs
-.vscode/

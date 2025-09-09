@@ -6,7 +6,6 @@ English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 
 各フォルダのタスク管理を行う Vscode の拡張機能です。
 
-## 
 
 ## 機能
 

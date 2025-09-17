@@ -1,4 +1,7 @@
 # TkMR - Task Manager
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 
@@ -27,6 +30,25 @@ English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 
 プルリクエストなど歓迎します。
 
-### 貢献者
 
-- [Kaminuma](https://github.com/kaminuma)
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kaminuma"><img src="https://avatars.githubusercontent.com/u/33448874?v=4?s=100" width="100px;" alt="kaminuma"/><br /><sub><b>kaminuma</b></sub></a><br /><a href="https://github.com/kaedeek/TkMR_Task-Manager/issues?q=author%3Akaminuma" title="Bug reports">🐛</a> <a href="#ideas-kaminuma" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

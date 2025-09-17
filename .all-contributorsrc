@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "kaminuma",
+      "name": "kaminuma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33448874?v=4",
+      "profile": "https://github.com/kaminuma",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "TkMR_Task-Manager",
+  "projectOwner": "kaedeek"
+}

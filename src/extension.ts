@@ -1,53 +1,79 @@
-import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
+import * as vscode from "vscode";
+import * as fs from "fs";
+import * as path from "path";
 
 export function activate(context: vscode.ExtensionContext) {
-  const rootPath = vscode.workspace.workspaceFolders?.[0].uri.fsPath || '';
-  const tasksFile = path.join(rootPath, 'tasks.json');
+  const rootPath = vscode.workspace.workspaceFolders?.[0].uri.fsPath || "";
+  const tasksFile = path.join(rootPath, "tasks.json");
 
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-  statusBarItem.text = "✔ Task Management";
+  statusBarItem.text = "✔ Task Manager";
   statusBarItem.command = "taskManager.open";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
-  context.subscriptions.push(vscode.commands.registerCommand("taskManager.open", () => {
-    const panel = vscode.window.createWebviewPanel(
-      "taskManager",
-      "Task Management",
-      vscode.ViewColumn.One,
-      { enableScripts: true }
-    );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("taskManager.open", () => {
+      const panel = vscode.window.createWebviewPanel(
+        "taskManager",
+        "Task Management",
+        vscode.ViewColumn.One,
+        { enableScripts: true }
+      );
 
-    function loadTasks() {
-      if (fs.existsSync(tasksFile)) {
-        return JSON.parse(fs.readFileSync(tasksFile, "utf-8")).tasks;
+      function loadTasks() {
+        if (fs.existsSync(tasksFile)) {
+          return JSON.parse(fs.readFileSync(tasksFile, "utf-8")).tasks;
+        }
+        return [];
       }
-      return [];
-    }
 
-    let tasks = loadTasks();
-    panel.webview.html = getWebviewContent(tasks);
-
-    panel.webview.onDidReceiveMessage(message => {
-      if (message.command === "addTask") {
-        tasks.push({ title: message.title, done: false });
-      } else if (message.command === "toggleTask") {
-        tasks[message.index].done = !tasks[message.index].done;
-      } else if (message.command === "deleteTask") {
-        tasks.splice(message.index, 1);
-      }
-      fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
+      let tasks = loadTasks();
       panel.webview.html = getWebviewContent(tasks);
-    });
-  }));
+
+      panel.webview.onDidReceiveMessage(async (message) => {
+        if (message.command === "addTask") {
+          tasks.push({ title: message.title, done: false });
+        } else if (message.command === "toggleTask") {
+          tasks[message.index].done = !tasks[message.index].done;
+        } else if (message.command === "editTask") {
+          await vscode.commands.executeCommand("taskManager.editTask", message.index);
+        } else if (message.command === "deleteTask") {
+          await vscode.commands.executeCommand("taskManager.deleteTask", message.index);
+        }
+        fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
+        panel.webview.html = getWebviewContent(tasks);
+      });
+
+      context.subscriptions.push(
+        vscode.commands.registerCommand("taskManager.editTask", async (index: number) => {
+          const newTitle = await vscode.window.showInputBox({
+            prompt: "Enter new task title",
+            value: tasks[index]?.title || "",
+          });
+          if (newTitle) {
+            tasks[index].title = newTitle;
+            fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
+            panel.webview.html = getWebviewContent(tasks);
+          }
+        })
+      );
+
+      context.subscriptions.push(
+        vscode.commands.registerCommand("taskManager.deleteTask", (index: number) => {
+          tasks.splice(index, 1);
+          fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
+          panel.webview.html = getWebviewContent(tasks);
+        })
+      );
+    })
+  );
 }
 
 function getWebviewContent(tasks: any[]): string {
   return `
     <!DOCTYPE html>
-    <html lang="ja">
+    <html lang="en">
     <head>
       <style>
         body {
@@ -130,6 +156,7 @@ function getWebviewContent(tasks: any[]): string {
           `<li>
             <button onclick="toggleTask(${i})">${t.done ? "✅" : "⬜"}</button>
             <span class="task-title ${t.done ? "done" : ""}">${t.title}</span>
+            <button onclick="editTask(${i})">✏️</button>
             <button onclick="deleteTask(${i})">🗑</button>
           </li>`
         ).join("")}
@@ -151,6 +178,9 @@ function getWebviewContent(tasks: any[]): string {
         function toggleTask(index) {
           vscode.postMessage({ command: 'toggleTask', index });
         }
+        function editTask(index) {
+          vscode.postMessage({ command: 'editTask', index });
+        }
         function deleteTask(index) {
           vscode.postMessage({ command: 'deleteTask', index });
         }
@@ -158,3 +188,5 @@ function getWebviewContent(tasks: any[]): string {
     </body>
     </html>`;
 }
+
+export function deactivate() {}

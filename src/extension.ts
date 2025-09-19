@@ -7,10 +7,20 @@ export function activate(context: vscode.ExtensionContext) {
   const tasksFile = path.join(rootPath, "tasks.json");
 
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-  statusBarItem.text = "✔ Task Manager";
   statusBarItem.command = "taskManager.open";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
+
+  function getProgressText(tasks: any[]): string {
+    const completed = tasks.filter(t => t.done).length;
+    const total = tasks.length;
+    const progress = tasks.length > 0 ? Math.round((completed / total) * 100) : 0;
+    
+    const barLength = 10;
+    const filled = Math.round((progress / 100) * barLength);
+    const bar = "█".repeat(filled) + " ".repeat(barLength - filled);
+    return `✔ Task Manager [${bar}] ${progress}%`;
+  }
 
   context.subscriptions.push(
     vscode.commands.registerCommand("taskManager.open", () => {
@@ -29,6 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       let tasks = loadTasks();
+      statusBarItem.text = getProgressText(tasks);
       panel.webview.html = getWebviewContent(tasks);
 
       panel.webview.onDidReceiveMessage(async (message) => {
@@ -54,6 +65,8 @@ export function activate(context: vscode.ExtensionContext) {
           if (newTitle) {
             tasks[index].title = newTitle;
             fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
+
+            statusBarItem.text = getProgressText(tasks);
             panel.webview.html = getWebviewContent(tasks);
           }
         })
@@ -63,6 +76,8 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand("taskManager.deleteTask", (index: number) => {
           tasks.splice(index, 1);
           fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
+
+          statusBarItem.text = getProgressText(tasks);
           panel.webview.html = getWebviewContent(tasks);
         })
       );

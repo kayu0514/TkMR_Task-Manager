@@ -15,8 +15,9 @@ English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 - タスク削除
 - タスク編集
 - タスクチェック
+- 進歩バー
 
-上記、**3 つ**が主な機能です
+上記、**4つ**が主な機能です
 これから、機能を追加して行く予定です。
 
 ## 使い方

@@ -52,6 +52,9 @@ export function activate(context: vscode.ExtensionContext) {
         } else if (message.command === "deleteTask") {
           await vscode.commands.executeCommand("taskManager.deleteTask", message.index);
         }
+
+        statusBarItem.text = getProgressText(tasks);
+        
         fs.writeFileSync(tasksFile, JSON.stringify({ tasks }, null, 2));
         panel.webview.html = getWebviewContent(tasks);
       });

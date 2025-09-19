@@ -89,6 +89,12 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function getWebviewContent(tasks: any[]): string {
+  const completed = tasks.filter(t => t.done).length;
+  const total = tasks.length;
+  const progress = total > 0 ? Math.round((completed / total) * 100) : 0;
+  const barLength = 10;
+  const filled = Math.round((progress / 100) * barLength);
+  const bar = "█".repeat(filled) + " ".repeat(barLength - filled);
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -99,6 +105,13 @@ function getWebviewContent(tasks: any[]): string {
           padding: 20px;
           background: linear-gradient(135deg, #1e1e2f, #121212);
           color: #fff;
+        }
+        .progress-label {
+          text-align: center;
+          font-size: 16px;
+          color: #fff;
+          margin-bottom: 18px;
+          letter-spacing: 1px;
         }
         h2 {
           text-align: center;
@@ -168,6 +181,7 @@ function getWebviewContent(tasks: any[]): string {
       </style>
     </head>
     <body>
+      <div class="progress-label">[${bar}] ${progress}% 完了</div>
       <h2>✔ Task Management</h2>
       <ul>
         ${tasks.map((t, i) =>

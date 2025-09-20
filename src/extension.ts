@@ -181,7 +181,7 @@ function getWebviewContent(tasks: any[]): string {
       </style>
     </head>
     <body>
-      <div class="progress-label">[${bar}] ${progress}% 完了</div>
+      <div class="progress-label">[${bar}] ${progress}% Complete🎉</div>
       <h2>✔ Task Management</h2>
       <ul>
         ${tasks.map((t, i) =>

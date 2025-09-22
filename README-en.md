@@ -14,7 +14,7 @@ TkMR - Task Manager is a VSCode extension for managing tasks in each folder.
 - Check tasks
 - Progress bar
 
-The above **four** are the main features.  
+The above **five** are the main features.  
 We plan to add more features in the future.
 
 ## Usage

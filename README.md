@@ -1,6 +1,9 @@
 # TkMR - Task Manager
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
@@ -17,7 +20,7 @@ English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 - タスクチェック
 - 進歩バー
 
-上記、**4つ**が主な機能です
+上記、**5 つ**が主な機能です
 これから、機能を追加して行く予定です。
 
 ## 使い方
@@ -30,7 +33,6 @@ English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 ### コントリビューション
 
 プルリクエストなど歓迎します。
-
 
 ## Contributors ✨
 

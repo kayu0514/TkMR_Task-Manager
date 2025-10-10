@@ -6,6 +6,8 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/kaedeek.TkMR?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=kaedeek.TkMR)
+
 English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 
 ## TkMR - Task Manager とは？
@@ -19,8 +21,10 @@ English [here](https://github.com/kaedeek/TaskManager/blob/main/README-en.md)
 - タスク編集
 - タスクチェック
 - 進歩バー
+- 日本語/英語変換
+- チェックリスト関連(チェックリスト/チェックリスト自動削除)
 
-上記、**5 つ**が主な機能です
+上記、**7 つ**が主な機能です
 これから、機能を追加して行く予定です。
 
 ## 使い方
